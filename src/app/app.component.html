@@ -1,21 +1,166 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
-<router-outlet></router-outlet>
+<form #poll = "ngForm" (ngSubmit) = "onClickSubmit(poll.value)">
+  <div class="container">
+    <h1> POLL - 2019 - Kerala </h1>
+      <mat-form-field>
+        <mat-select  placeholder="Thiruvananthapuram" name="Thiruvananthapuram"  ngModel required>
+          <mat-option *ngFor="let cndidate of Thiruvananthapuram" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Attingal" name="Attingal" ngModel required>
+          <mat-option *ngFor="let cndidate of Attingal" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Kollam" name="Kollam" ngModel required>
+          <mat-option *ngFor="let cndidate of Kollam" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Pathanamthitta" name="Pathanamthitta" ngModel required>
+          <mat-option *ngFor="let cndidate of Pathanamthitta" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Mavelikkara" name="Mavelikkara" ngModel required>
+          <mat-option *ngFor="let cndidate of Mavelikkara" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Alappuzha" name="Alappuzha" ngModel required>
+          <mat-option *ngFor="let cndidate of Alappuzha" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Kottayam" name="Kottayam" ngModel required>
+          <mat-option *ngFor="let cndidate of Kottayam" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Idukki" name="Idukki" ngModel required>  
+          <mat-option *ngFor="let cndidate of Idukki" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Ernakulam" name="Ernakulam" ngModel required>
+          <mat-option *ngFor="let cndidate of Ernakulam" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Chalakudy" name="Chalakudy" ngModel required>
+          <mat-option *ngFor="let cndidate of Chalakudy" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Thrissur" name="Thrissur" ngModel required>
+          <mat-option *ngFor="let cndidate of Thrissur" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Alathur"  name="Alathur" ngModel required>
+          <mat-option *ngFor="let cndidate of Alathur" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Palakkad" name="Palakkad" ngModel required>
+          <mat-option *ngFor="let cndidate of Palakkad" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Ponnani" name="Ponnani" ngModel required>
+          <mat-option *ngFor="let cndidate of Ponnani" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Malappuram" name="Malappuram" ngModel required>
+          <mat-option *ngFor="let cndidate of Malappuram" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Kozhikode" name="Kozhikode" ngModel required>
+          <mat-option *ngFor="let cndidate of Kozhikode" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Wayanad" name="Wayanad" ngModel required>
+          <mat-option *ngFor="let cndidate of Wayanad" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Vatakara" name="Vatakara" ngModel required>
+          <mat-option *ngFor="let cndidate of Vatakara" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Kannur" name="Kannur" ngModel required>
+          <mat-option *ngFor="let cndidate of Kannur" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <mat-form-field>
+        <mat-select placeholder="Kasaragod" name="Kasaragod" ngModel required>
+          <mat-option *ngFor="let cndidate of Kasaragod" [value]="cndidate.value">
+            {{cndidate.viewValue}}
+          </mat-option>
+        </mat-select>
+     </mat-form-field>
+     <br/>
+     <button class="save-btn" mat-raised-button>Save</button>
+  </div>
+</form>
