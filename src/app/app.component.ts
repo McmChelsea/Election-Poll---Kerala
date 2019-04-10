@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { FireServiceService } from './fire-service.service';
 
 @Component({
   selector: 'app-root',
@@ -130,11 +130,18 @@ export class AppComponent {
         { value: 'Others', viewValue: 'Others' }
     ];
 
+    constructor(public fs: FireServiceService) { }
+
     onClickSubmit(data) {
       //alert("Entered Email id : " + data.Thiruvananthapuram);
-      var body = [{tvm: data.Thiruvananthapuram,
-                   Attingal: data.Attingal }];
-      console.log(body);
+      console.log(data);
+      this.fs.createUser(data)
+      .then(
+          res => {
+              console.log("success");
+          }
+
+      )
    }
 
     

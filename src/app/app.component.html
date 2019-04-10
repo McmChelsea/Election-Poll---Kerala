@@ -2,6 +2,10 @@
   <div class="container">
     <h1> POLL - 2019 - Kerala </h1>
       <mat-form-field>
+        <input matInput placeholder="UID" name="UID" ngModel required>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
         <mat-select  placeholder="Thiruvananthapuram" name="Thiruvananthapuram"  ngModel required>
           <mat-option *ngFor="let cndidate of Thiruvananthapuram" [value]="cndidate.value">
             {{cndidate.viewValue}}
