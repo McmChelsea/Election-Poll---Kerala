@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FireServiceService } from './fire-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'ElecPoll';
-  public tvm: string;
+  a: any;
    Thiruvananthapuram = [
         { value: 'Shashi Tharoor', viewValue: 'Shashi Tharoor(UDF)' },
         { value: 'C. Divakaran', viewValue: 'C. Divakaran(LDF)' },
@@ -130,19 +131,31 @@ export class AppComponent {
         { value: 'Others', viewValue: 'Others' }
     ];
 
-    constructor(public fs: FireServiceService) { }
+    constructor(public fs: FireServiceService, private route:Router, public db: FireServiceService) { }
+
+    ngOnInit() { 
+      this.getDetails();
+    }
+
+    getDetails = () => 
+    this.db.getPeople()
+    .subscribe(
+      res =>  { 
+      console.log(res); 
+    });
 
     onClickSubmit(data) {
       //alert("Entered Email id : " + data.Thiruvananthapuram);
-      console.log(data);
+      
       this.fs.createUser(data)
       .then(
           res => {
-              console.log("success");
+               console.log("success");
           }
 
       )
    }
-
-    
+  //  Admin(){
+  //    this.route.navigate(['/','admin']);
+  //  }
 }

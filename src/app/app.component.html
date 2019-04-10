@@ -1,6 +1,8 @@
 <form #poll = "ngForm" (ngSubmit) = "onClickSubmit(poll.value)">
   <div class="container">
     <h1> POLL - 2019 - Kerala </h1>
+    
+    <button class="save-btn" mat-raised-button (click)="getDetails()">Admin</button>
       <mat-form-field>
         <input matInput placeholder="UID" name="UID" ngModel required>
       </mat-form-field>
@@ -165,6 +167,8 @@
         </mat-select>
      </mat-form-field>
      <br/>
+     
      <button class="save-btn" mat-raised-button>Save</button>
   </div>
 </form>
+<router-outlet></router-outlet>
