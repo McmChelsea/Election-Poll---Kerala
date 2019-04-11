@@ -7,13 +7,15 @@
       </mat-form-field>
       <br/>-->
     <mat-vertical-stepper>
-      <mat-step *ngFor="let const of contituents" [stepControl]="const.viewValue">
-        <ng-template matStepLabel>{{const.viewValue}}</ng-template>
+      <mat-step *ngFor="let cnst of constituents" [stepControl]="cnst.viewValue">
+        <ng-template matStepLabel>{{cnst.viewValue}}</ng-template>
         <mat-form-field>
-          <mat-select *ngFor = "let rpo of cons" name="rpo.viewValue" ngModel>
-            <mat-option  [value]="rpo.tvm.value">
-              {{rpo.tvm.viewValue}} 
+          <mat-select name="cnst.viewValue" ngModel>
+            <ng-container *ngFor="let name of cnst.candte">
+            <mat-option  [value]="name.value">
+              {{name.value}} 
             </mat-option>
+          </ng-container>
           </mat-select>
         </mat-form-field>
         <div>

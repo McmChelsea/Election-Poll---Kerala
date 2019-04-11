@@ -14,14 +14,51 @@ export class AppComponent implements OnInit {
     isLinear = false;
     firstFormGroup: FormGroup;
     secondFormGroup: FormGroup;
-    contituents = [
-        { value: 'Thiruvananthapuram', viewValue: 'Thiruvananthapuram', 
-        tvm : [{ value: 'Shashi Tharoor', viewValue: 'Shashi Tharoor(UDF)' },
-               { value: 'C. Divakaran', viewValue: 'C. Divakaran(LDF)' },
-               { value: 'Kummanam Rajasekharan', viewValue: 'Kummanam Rajasekharan(NDA)' },
-               { value: 'Others', viewValue: 'Others' }
-            ]},
-        { value: 'Attingal', viewValue: 'Attingal' },
+    constituents = [
+        { 
+            value: 'Thiruvananthapuram', 
+            viewValue: 'Thiruvananthapuram', 
+            candte : [
+                { 
+                    value: 'Shashi Tharoor', 
+                    viewValue: 'Shashi Tharoor(UDF)' 
+                },
+                { 
+                    value: 'C. Divakaran', 
+                    viewValue: 'C. Divakaran(LDF)' 
+                },
+                { 
+                    value: 'Kummanam Rajasekharan', 
+                    viewValue: 'Kummanam Rajasekharan(NDA)' 
+                },
+                { 
+                    value: 'Others', 
+                    viewValue: 'Others' 
+                }
+            ]
+        },
+        { 
+            value: 'Attingal', 
+            viewValue: 'Attingal',
+            candte : [
+                { 
+                    value: 'Adoor Prakash', 
+                    viewValue: 'Adoor Prakash(UDF)' 
+                },
+                {
+                     value: 'A. Sampath', 
+                     viewValue: 'A. Sampath(LDF)' 
+                },
+                { 
+                    value: 'Shobha Surendran', 
+                    viewValue: 'Shobha Surendran(NDA)' 
+                },
+                { 
+                    value: 'Others', 
+                    viewValue: 'Others' 
+                }
+            ]
+        },
         { value: 'Kollam', viewValue: 'Kollam' },
         { value: 'Pathanamthitta', viewValue: 'Pathanamthitta' },
         { value: 'Mavelikkara', viewValue: 'Mavelikkara' },
@@ -41,19 +78,7 @@ export class AppComponent implements OnInit {
         { value: 'Kannur', viewValue: 'Kannur' },
         { value: 'Kasaragod', viewValue: 'Kasaragod' }
     ];
-
-    Thiruvananthapuram = [
-        { value: 'Shashi Tharoor', viewValue: 'Shashi Tharoor(UDF)' },
-        { value: 'C. Divakaran', viewValue: 'C. Divakaran(LDF)' },
-        { value: 'Kummanam Rajasekharan', viewValue: 'Kummanam Rajasekharan(NDA)' },
-        { value: 'Others', viewValue: 'Others' }
-    ];
-    Attingal = [
-        { value: 'Adoor Prakash', viewValue: 'Adoor Prakash(UDF)' },
-        { value: 'A. Sampath', viewValue: 'A. Sampath(LDF)' },
-        { value: 'Shobha Surendran', viewValue: 'Shobha Surendran(NDA)' },
-        { value: 'Others', viewValue: 'Others' }
-    ];
+   
     Kollam = [
         { value: 'N. K. Premachandran', viewValue: 'N. K. Premachandran(UDF)' },
         { value: 'K. N. Balagopal', viewValue: 'K. N. Balagopal(LDF)' },
@@ -166,33 +191,33 @@ export class AppComponent implements OnInit {
     constructor(public fs: FireServiceService, private route: Router, public db: FireServiceService, private _formBuilder: FormBuilder) { }
 
     ngOnInit() {
-        this.getDetails();
-        this.firstFormGroup = this._formBuilder.group({
-            firstCtrl: ['', Validators.required]
-        });
+        //this.getDetails();
+        // this.firstFormGroup = this._formBuilder.group({
+        //     firstCtrl: ['', Validators.required]
+        // });
         // this.secondFormGroup = this._formBuilder.group({
         //   secondCtrl: ['', Validators.required]
         // });
     }
 
-    getDetails = () =>
-        this.db.getPeople()
-            .subscribe(
-            res => {
-                console.log(res);
-            });
+    // getDetails = () =>
+    //     this.db.getPeople()
+    //         .subscribe(
+    //         res => {
+    //             console.log(res);
+    //         });
 
-    onClickSubmit(data) {
-        //alert("Entered Email id : " + data.Thiruvananthapuram);
+    // onClickSubmit(data) {
+    //     //alert("Entered Email id : " + data.Thiruvananthapuram);
 
-        this.fs.createUser(data)
-            .then(
-            res => {
-                console.log("success");
-            }
+    //     this.fs.createUser(data)
+    //         .then(
+    //         res => {
+    //             console.log("success");
+    //         }
 
-            )
-    }
+    //         )
+    // }
     //  Admin(){
     //    this.route.navigate(['/','admin']);
     //  }
