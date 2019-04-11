@@ -1,16 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { FireServiceService } from './fire-service.service';
 import { Router } from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  title = 'ElecPoll';
-  a: any;
-   Thiruvananthapuram = [
+export class AppComponent implements OnInit {
+    title = 'ElecPoll';
+    a: any;
+    isLinear = false;
+    firstFormGroup: FormGroup;
+    secondFormGroup: FormGroup;
+    contituents = [
+        { value: 'Thiruvananthapuram', viewValue: 'Thiruvananthapuram', 
+        tvm : [{ value: 'Shashi Tharoor', viewValue: 'Shashi Tharoor(UDF)' },
+               { value: 'C. Divakaran', viewValue: 'C. Divakaran(LDF)' },
+               { value: 'Kummanam Rajasekharan', viewValue: 'Kummanam Rajasekharan(NDA)' },
+               { value: 'Others', viewValue: 'Others' }
+            ]},
+        { value: 'Attingal', viewValue: 'Attingal' },
+        { value: 'Kollam', viewValue: 'Kollam' },
+        { value: 'Pathanamthitta', viewValue: 'Pathanamthitta' },
+        { value: 'Mavelikkara', viewValue: 'Mavelikkara' },
+        { value: 'Alappuzha', viewValue: 'Alappuzha' },
+        { value: 'Kottayam', viewValue: 'Kottayam' },
+        { value: 'Idukki', viewValue: 'Idukki' },
+        { value: 'Ernakulam', viewValue: 'Ernakulam' },
+        { value: 'Chalakudy', viewValue: 'Chalakudy' },
+        { value: 'Thrissur', viewValue: 'Thrissur' },
+        { value: 'Alathur', viewValue: 'Alathur' },
+        { value: 'Palakkad', viewValue: 'Palakkad' },
+        { value: 'Ponnani', viewValue: 'Ponnani' },
+        { value: 'Malappuram', viewValue: 'Malappuram' },
+        { value: 'Kozhikode', viewValue: 'Kozhikode' },
+        { value: 'Wayanad', viewValue: 'Wayanad' },
+        { value: 'Vatakara', viewValue: 'Vatakara' },
+        { value: 'Kannur', viewValue: 'Kannur' },
+        { value: 'Kasaragod', viewValue: 'Kasaragod' }
+    ];
+
+    Thiruvananthapuram = [
         { value: 'Shashi Tharoor', viewValue: 'Shashi Tharoor(UDF)' },
         { value: 'C. Divakaran', viewValue: 'C. Divakaran(LDF)' },
         { value: 'Kummanam Rajasekharan', viewValue: 'Kummanam Rajasekharan(NDA)' },
@@ -131,31 +163,37 @@ export class AppComponent implements OnInit{
         { value: 'Others', viewValue: 'Others' }
     ];
 
-    constructor(public fs: FireServiceService, private route:Router, public db: FireServiceService) { }
+    constructor(public fs: FireServiceService, private route: Router, public db: FireServiceService, private _formBuilder: FormBuilder) { }
 
-    ngOnInit() { 
-      this.getDetails();
+    ngOnInit() {
+        this.getDetails();
+        this.firstFormGroup = this._formBuilder.group({
+            firstCtrl: ['', Validators.required]
+        });
+        // this.secondFormGroup = this._formBuilder.group({
+        //   secondCtrl: ['', Validators.required]
+        // });
     }
 
-    getDetails = () => 
-    this.db.getPeople()
-    .subscribe(
-      res =>  { 
-      console.log(res); 
-    });
+    getDetails = () =>
+        this.db.getPeople()
+            .subscribe(
+            res => {
+                console.log(res);
+            });
 
     onClickSubmit(data) {
-      //alert("Entered Email id : " + data.Thiruvananthapuram);
-      
-      this.fs.createUser(data)
-      .then(
-          res => {
-               console.log("success");
-          }
+        //alert("Entered Email id : " + data.Thiruvananthapuram);
 
-      )
-   }
-  //  Admin(){
-  //    this.route.navigate(['/','admin']);
-  //  }
+        this.fs.createUser(data)
+            .then(
+            res => {
+                console.log("success");
+            }
+
+            )
+    }
+    //  Admin(){
+    //    this.route.navigate(['/','admin']);
+    //  }
 }

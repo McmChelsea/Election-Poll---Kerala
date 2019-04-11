@@ -1,20 +1,49 @@
-<form #poll = "ngForm" (ngSubmit) = "onClickSubmit(poll.value)">
+<form #poll="ngForm" (ngSubmit)="onClickSubmit(poll.value)">
   <div class="container">
     <h1> POLL - 2019 - Kerala </h1>
-    
-    <button class="save-btn" mat-raised-button (click)="getDetails()">Admin</button>
+    <!--<button [routerLink]="admin" class="save-btn" mat-raised-button (click)="getDetails()">Admin</button>
       <mat-form-field>
         <input matInput placeholder="UID" name="UID" ngModel required>
       </mat-form-field>
+      <br/>-->
+    <mat-vertical-stepper>
+      <mat-step *ngFor="let const of contituents" [stepControl]="const.viewValue">
+        <ng-template matStepLabel>{{const.viewValue}}</ng-template>
+        <mat-form-field>
+          <mat-select *ngFor = "let rpo of cons" name="rpo.viewValue" ngModel>
+            <mat-option  [value]="rpo.tvm.value">
+              {{rpo.tvm.viewValue}} 
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </mat-step>
       <br/>
-      <mat-form-field>
-        <mat-select  placeholder="Thiruvananthapuram" name="Thiruvananthapuram"  ngModel required>
-          <mat-option *ngFor="let cndidate of Thiruvananthapuram" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
+      <!--<button class="save-btn" mat-raised-button>Save</button>
+        <button class="save-btn" mat-raised-button (click)="poll.reset()">Reset</button>-->
+    </mat-vertical-stepper>
+  </div>
+</form>
+<!--<mat-vertical-stepper>
+        <mat-step [stepControl]="firstFormGroup">
+        <ng-template matStepLabel>Trivandrum</ng-template>
+        <mat-form-field>
+            <mat-select  placeholder="Thiruvananthapuram" name="Thiruvananthapuram"  ngModel required>
+              <mat-option *ngFor="let cndidate of Thiruvananthapuram" [value]="cndidate.value">
+                {{cndidate.viewValue}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+        </mat-step>
      <br/>
+     <mat-step [stepControl]="SecondFormGroup">
+        <ng-template matStepLabel>Attingal</ng-template>
      <mat-form-field>
         <mat-select placeholder="Attingal" name="Attingal" ngModel required>
           <mat-option *ngFor="let cndidate of Attingal" [value]="cndidate.value">
@@ -22,6 +51,10 @@
           </mat-option>
         </mat-select>
      </mat-form-field>
+     <div>
+    <button mat-button matStepperNext>Next</button>
+    </div>
+    </mat-step>
      <br/>
      <mat-form-field>
         <mat-select placeholder="Kollam" name="Kollam" ngModel required>
@@ -167,8 +200,42 @@
         </mat-select>
      </mat-form-field>
      <br/>
-     
      <button class="save-btn" mat-raised-button>Save</button>
+     <button class="save-btn" mat-raised-button (click)="poll.reset()">Reset</button>
+    </mat-vertical-stepper>
   </div>
 </form>
-<router-outlet></router-outlet>
+<router-outlet></router-outlet>-->
+<!--<form>
+<mat-vertical-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Last name, First name"  required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address"  required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div> 
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
+</form>-->

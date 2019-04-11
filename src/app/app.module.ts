@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material';
-
+import { MatStepperModule } from '@angular/material/stepper';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
@@ -26,7 +26,9 @@ import { AdminComponent } from './admin/admin.component';
     MatSelectModule,
     MatButtonModule,
     FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
+    MatStepperModule,
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule

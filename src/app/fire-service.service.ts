@@ -33,7 +33,7 @@ export class FireServiceService {
   }
 
   getPeople(){
-    return this.db.collection('userdata').snapshotChanges();
+    return this.db.collection('/userdata').snapshotChanges();
 }
 
 }
