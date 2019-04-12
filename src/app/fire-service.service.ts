@@ -9,7 +9,7 @@ export class FireServiceService {
   constructor(public db: AngularFirestore) { }
 
   createUser(value){
-    return this.db.collection(value.UID).add({
+    return this.db.collection("EQ-team").doc(value.UID).set({
       Alappuzha: value.Alappuzha,
       Alathur: value.Alathur,
       Attingal: value.Attingal,
@@ -28,7 +28,11 @@ export class FireServiceService {
       Thiruvananthapuram: value.Thiruvananthapuram,
       Thrissur: value.Thrissur,
       Vatakara: value.Vatakara,
-      Wayanad: value.Wayanad
+      Wayanad: value.Wayanad,
+      UPA: value.upa,
+      NDA: value.nda,
+      ThrdFrnt: value.ThirdFront,
+      name: value.name
     });
   }
 

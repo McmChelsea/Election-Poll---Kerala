@@ -1,243 +1,58 @@
 <form #poll="ngForm" (ngSubmit)="onClickSubmit(poll.value)">
   <div class="container">
     <h1> POLL - 2019 - Kerala </h1>
-    <!--<button [routerLink]="admin" class="save-btn" mat-raised-button (click)="getDetails()">Admin</button>
-      <mat-form-field>
-        <input matInput placeholder="UID" name="UID" ngModel required>
+    <!--<button [routerLink]="admin" class="save-btn" mat-raised-button (click)="getDetails()">Admin</button>-->
+      <mat-form-field appearance="outline">
+        <mat-label>UID</mat-label>
+        <input matInput placeholder="Enter your UID" name="UID" ngModel required>
       </mat-form-field>
-      <br/>-->
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Enter your Name" name="name" ngModel>
+      </mat-form-field>
+      <br/>
+      <button class="save-btn" mat-raised-button>Save</button>
     <mat-vertical-stepper>
       <mat-step *ngFor="let cnst of constituents" [stepControl]="cnst.viewValue">
         <ng-template matStepLabel>{{cnst.viewValue}}</ng-template>
         <mat-form-field>
-          <mat-select name="cnst.viewValue" ngModel>
+          <mat-select (selectionChange)="onChange($event.value)"  [name]="cnst.viewValue" ngModel>
             <ng-container *ngFor="let name of cnst.candte">
             <mat-option  [value]="name.value">
-              {{name.value}} 
+              {{name.viewValue}} 
             </mat-option>
           </ng-container>
           </mat-select>
         </mat-form-field>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button type="button" mat-button matStepperPrevious>Back</button>
+          <button type="button" mat-button matStepperNext>Next</button>
         </div>
       </mat-step>
       <br/>
+      <!--<mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        You are now done.
+        <div>
+          <button mat-button (click)="poll.reset()">Reset</button>
+        </div>
+      </mat-step>-->
       <!--<button class="save-btn" mat-raised-button>Save</button>
         <button class="save-btn" mat-raised-button (click)="poll.reset()">Reset</button>-->
     </mat-vertical-stepper>
+    <mat-form-field appearance="outline">
+      <mat-label>Seats for UPA</mat-label>
+      <input type="number" matInput placeholder="Enter a number" name="upa" ngModel >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Seats for NDA</mat-label>
+      <input type="number" matInput placeholder="Enter a number" name="nda" ngModel >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Seats for 3rd Front + Others</mat-label>
+      <input type="number" matInput placeholder="Enter a number" name="ThirdFront" ngModel >
+    </mat-form-field>
+    <button class="save-btn" mat-raised-button>Save</button>
+    <button mat-raised-button (click)="poll.reset()">Reset</button>
   </div>
 </form>
-<!--<mat-vertical-stepper>
-        <mat-step [stepControl]="firstFormGroup">
-        <ng-template matStepLabel>Trivandrum</ng-template>
-        <mat-form-field>
-            <mat-select  placeholder="Thiruvananthapuram" name="Thiruvananthapuram"  ngModel required>
-              <mat-option *ngFor="let cndidate of Thiruvananthapuram" [value]="cndidate.value">
-                {{cndidate.viewValue}}
-              </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-        </mat-step>
-     <br/>
-     <mat-step [stepControl]="SecondFormGroup">
-        <ng-template matStepLabel>Attingal</ng-template>
-     <mat-form-field>
-        <mat-select placeholder="Attingal" name="Attingal" ngModel required>
-          <mat-option *ngFor="let cndidate of Attingal" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <div>
-    <button mat-button matStepperNext>Next</button>
-    </div>
-    </mat-step>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Kollam" name="Kollam" ngModel required>
-          <mat-option *ngFor="let cndidate of Kollam" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Pathanamthitta" name="Pathanamthitta" ngModel required>
-          <mat-option *ngFor="let cndidate of Pathanamthitta" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Mavelikkara" name="Mavelikkara" ngModel required>
-          <mat-option *ngFor="let cndidate of Mavelikkara" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Alappuzha" name="Alappuzha" ngModel required>
-          <mat-option *ngFor="let cndidate of Alappuzha" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Kottayam" name="Kottayam" ngModel required>
-          <mat-option *ngFor="let cndidate of Kottayam" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Idukki" name="Idukki" ngModel required>  
-          <mat-option *ngFor="let cndidate of Idukki" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Ernakulam" name="Ernakulam" ngModel required>
-          <mat-option *ngFor="let cndidate of Ernakulam" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Chalakudy" name="Chalakudy" ngModel required>
-          <mat-option *ngFor="let cndidate of Chalakudy" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Thrissur" name="Thrissur" ngModel required>
-          <mat-option *ngFor="let cndidate of Thrissur" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Alathur"  name="Alathur" ngModel required>
-          <mat-option *ngFor="let cndidate of Alathur" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Palakkad" name="Palakkad" ngModel required>
-          <mat-option *ngFor="let cndidate of Palakkad" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Ponnani" name="Ponnani" ngModel required>
-          <mat-option *ngFor="let cndidate of Ponnani" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Malappuram" name="Malappuram" ngModel required>
-          <mat-option *ngFor="let cndidate of Malappuram" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Kozhikode" name="Kozhikode" ngModel required>
-          <mat-option *ngFor="let cndidate of Kozhikode" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Wayanad" name="Wayanad" ngModel required>
-          <mat-option *ngFor="let cndidate of Wayanad" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Vatakara" name="Vatakara" ngModel required>
-          <mat-option *ngFor="let cndidate of Vatakara" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Kannur" name="Kannur" ngModel required>
-          <mat-option *ngFor="let cndidate of Kannur" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <mat-form-field>
-        <mat-select placeholder="Kasaragod" name="Kasaragod" ngModel required>
-          <mat-option *ngFor="let cndidate of Kasaragod" [value]="cndidate.value">
-            {{cndidate.viewValue}}
-          </mat-option>
-        </mat-select>
-     </mat-form-field>
-     <br/>
-     <button class="save-btn" mat-raised-button>Save</button>
-     <button class="save-btn" mat-raised-button (click)="poll.reset()">Reset</button>
-    </mat-vertical-stepper>
-  </div>
-</form>
-<router-outlet></router-outlet>-->
-<!--<form>
-<mat-vertical-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Last name, First name"  required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Address"  required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    You are now done.
-    <div> 
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
-</mat-vertical-stepper>
-</form>-->
