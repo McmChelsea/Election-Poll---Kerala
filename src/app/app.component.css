@@ -1,0 +1,44 @@
+.elecForm {
+    margin-left: 30%;
+    width: 45%;
+    border: 3px solid #673ab7;
+    border-radius: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.moveLeft {
+    margin-left: 5px;
+}
+.nameInp {
+    margin-left: 50px;
+    width: 39%;
+}
+.uidInpt{
+    margin-left: 37px;
+    width: 39%;
+}
+#title {
+    border-bottom: 3px solid #673ab7;
+    margin-bottom: 10%;
+    text-align: center;
+}
+.upaInp {
+    margin-left: 31px;
+}
+#nationalVote {
+    text-align: center;
+}
+.save-btn {
+    color: white;
+    background-color: #673ab7;
+    margin-left: 33%;
+    margin-bottom: 10%;
+    margin-top: 5%;
+}
+.reset {
+    color: #673ab7;
+}
+.save-btn, .reset {
+    border: 2px solid #673ab7;
+    width:18%;
+}
