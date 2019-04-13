@@ -29,10 +29,10 @@ export class FireServiceService {
       Thrissur: value.Thrissur,
       Vatakara: value.Vatakara,
       Wayanad: value.Wayanad,
-      UPA: value.upa,
-      NDA: value.nda,
-      ThrdFrnt: value.ThirdFront,
-      name: value.name
+      xUPA: value.upa,
+      xNDA: value.nda,
+      xThrdFrnt: value.ThirdFront,
+      aaname: value.name
     });
   }
 

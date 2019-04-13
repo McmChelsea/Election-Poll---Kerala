@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FireServiceService } from './fire-service.service';
 import { Router } from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { NgForm} from '@angular/forms';
 
 @Component({
     selector: 'app-root',
@@ -12,8 +12,6 @@ export class AppComponent implements OnInit {
     title = 'ElecPoll';
     a: any;
     isLinear = false;
-    firstFormGroup: FormGroup;
-    secondFormGroup: FormGroup;
     constituents = [
         { 
             value: 'Thiruvananthapuram', 
@@ -217,16 +215,10 @@ export class AppComponent implements OnInit {
         }
     ];
 
-    constructor(public fs: FireServiceService, private route: Router, public db: FireServiceService, private _formBuilder: FormBuilder) { }
+    constructor(public fs: FireServiceService, private route: Router, public db: FireServiceService) { }
 
     ngOnInit() {
         //this.getDetails();
-        // this.firstFormGroup = this._formBuilder.group({
-        //     firstCtrl: ['', Validators.required]
-        // });
-        // this.secondFormGroup = this._formBuilder.group({
-        //   secondCtrl: ['', Validators.required]
-        // });
     }
 
     // getDetails = () =>
@@ -236,18 +228,21 @@ export class AppComponent implements OnInit {
     //             console.log(res);
     //         });
 
-    onClickSubmit(data) {
-        console.log(data);
-        // this.fs.createUser(data)
-        //     .then(
-        //     res => {
-        //         console.log("success");
-        //     }
-
-        //     )
+    onClickSubmit(form: NgForm, data, isValid: boolean) {
+        if(!isValid){
+            alert("Enter All Fields")
+        }else{
+            this.fs.createUser(data)
+            .then(
+            res => {
+                alert("Your form has been submitted");
+                //form.reset();
+                }
+            )
+        }
     }
     onChange(change){
-        console.log(change);
+
     }
     //  Admin(){
     //    this.route.navigate(['/','admin']);

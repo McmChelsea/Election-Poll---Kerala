@@ -1,4 +1,4 @@
-<form #poll="ngForm" (ngSubmit)="onClickSubmit(poll.value)">
+<form #poll="ngForm" (ngSubmit)="onClickSubmit(poll,poll.value,poll.valid)" novalidate>
   <div class="container">
     <div class="elecForm">
     <div id="title"><h1>EQ LS Election Poll - 2019 - Kerala </h1></div>
@@ -9,14 +9,14 @@
       </mat-form-field>
       <mat-form-field class="moveLeft nameInp" appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="Enter your Name" name="name" ngModel>
+        <input matInput placeholder="Enter your Name" name="name" ngModel required>
       </mat-form-field>
       <br/>
     <mat-vertical-stepper>
       <mat-step *ngFor="let cnst of constituents" [stepControl]="cnst.viewValue">
         <ng-template matStepLabel>{{cnst.viewValue}}</ng-template>
         <mat-form-field>
-          <mat-select (selectionChange)="onChange($event.value)"  [name]="cnst.value" ngModel>
+          <mat-select (selectionChange)="onChange($event.value)"  [name]="cnst.value" ngModel required>
             <ng-container *ngFor="let name of cnst.candte">
             <mat-option  [value]="name.viewValue">
               {{name.viewValue}} 
@@ -43,19 +43,19 @@
     <div id="nationalVote"><h2>Whom to Vote?</h2></div>
     <mat-form-field class="moveLeft upaInp" appearance="outline">
       <mat-label>Seats for UPA</mat-label>
-      <input type="number" matInput placeholder="Enter a number" name="upa" ngModel >
+      <input type="number" matInput placeholder="Enter a number" name="upa" ngModel required>
     </mat-form-field>
     <mat-form-field class="moveLeft" appearance="outline">
       <mat-label>Seats for NDA</mat-label>
-      <input type="number" matInput placeholder="Enter a number" name="nda" ngModel >
+      <input type="number" matInput placeholder="Enter a number" name="nda" ngModel required>
     </mat-form-field>
     <mat-form-field class="moveLeft" appearance="outline">
       <mat-label>Seats for 3rd Front + Others</mat-label>
-      <input type="number" matInput placeholder="Enter a number" name="ThirdFront" ngModel >
+      <input type="number" matInput placeholder="Enter a number" name="ThirdFront" ngModel required>
     </mat-form-field>
     <br/>
     <button class="save-btn moveLeft" mat-raised-button>Submit</button>
-    <button class=" reset moveLeft" mat-raised-button (click)="poll.reset()">Reset</button>
+    <button type="button" class=" reset moveLeft" mat-raised-button (click)="poll.reset()">Reset</button>
     </div>
   </div>
 </form>
