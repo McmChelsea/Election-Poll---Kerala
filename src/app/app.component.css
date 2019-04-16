@@ -10,11 +10,11 @@
     margin-left: 5px;
 }
 .nameInp {
-    margin-left: 50px;
+    margin-left: 10%;
     width: 39%;
 }
 .uidInpt{
-    margin-left: 37px;
+    margin-left: 5%;
     width: 39%;
 }
 #title {
@@ -23,7 +23,7 @@
     text-align: center;
 }
 .upaInp {
-    margin-left: 31px;
+    margin-left: 4%;
 }
 #nationalVote {
     text-align: center;
@@ -41,4 +41,12 @@
 .save-btn, .reset {
     border: 2px solid #673ab7;
     width:18%;
+}
+#totalNo {
+    position: relative;
+    top: -30px;
+    left: 4%
+}
+.selOptns {
+    width: 40%;
 }
