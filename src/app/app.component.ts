@@ -10,6 +10,7 @@ import { ConstantPool } from '@angular/compiler';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+    btnSbtDisabled = false;
     remainingSeats = 543;
     title = 'ElecPoll';
     a: any;
@@ -22,6 +23,17 @@ export class AppComponent implements OnInit {
     isDisabledUpa: boolean = false;
     isDisabledNda: boolean = false;
     isDisabledOth: boolean = false;
+    displayDiv = 'form';
+    text: any = {
+        Year: 'Year',
+        Month: 'Month',
+        Weeks: "Weeks",
+        Days: "Days",
+        Hours: "Hours",
+        Minutes: "Minutes",
+        Seconds: "Seconds",
+        MilliSeconds: "MilliSeconds"
+    };
     constituents = [
         {
             value: 'Thiruvananthapuram',
@@ -240,20 +252,25 @@ export class AppComponent implements OnInit {
 
     onClickSubmit(form: NgForm, data, isValid: boolean) {
         const total = this.upa + this.nda + this.Thrdfrnt;
-
+        this.btnSbtDisabled = true;
         if (!isValid) {
             alert("Enter All Fields")
+            this.btnSbtDisabled = false;
         } else if (this.upa === null || this.nda === null || this.Thrdfrnt === null) {
             alert('Please fill all the seat shares');
+            this.btnSbtDisabled = false;
         } else if (total !== 543) {
             alert('Prediction Total must be equal to 543');
             this.Thrdfrnt = 543 - (this.upa + this.nda);
+            this.btnSbtDisabled = false;
         } else {
             this.fs.createUser(data)
                 .then(
                     res => {
-                        alert("Your form has been submitted");
-                        form.reset();
+                        // alert("Your form has been submitted");
+                        // form.reset();
+                        this.btnSbtDisabled = false;
+                        this.displayDiv = 'msg-success';
                     }
                 )
         }

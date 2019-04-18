@@ -6,18 +6,20 @@ import { AppComponent } from './app.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule, MatCardModule } from '@angular/material';
 import { MatStepperModule } from '@angular/material/stepper';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { AdminComponent } from './admin/admin.component';
+import { CountDown } from "ng2-date-countdown";
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminComponent
+    AdminComponent,
+    CountDown
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { AdminComponent } from './admin/admin.component';
     MatFormFieldModule,
     MatStepperModule,
     MatInputModule,
+    MatCardModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],

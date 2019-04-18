@@ -1,4 +1,9 @@
-<form #poll="ngForm" (ngSubmit)="onClickSubmit(poll,poll.value,poll.valid)" novalidate>
+<!-- countdown timer -->
+<p class="label-counter">Time remaining:</p> 
+<countdown [text]="text" units="Days | Hours | Minutes | Seconds" end="April 23, 2019"></countdown>
+
+<!-- Election Form Start -->
+<form *ngIf="displayDiv==='form'" #poll="ngForm" (ngSubmit)="onClickSubmit(poll,poll.value,poll.valid)" novalidate>
   <div class="container">
     <div class="elecForm">
       <div id="title">
@@ -18,7 +23,7 @@
         <mat-step *ngFor="let cnst of constituents; let i = index;" [stepControl]="cnst.viewValue">
           <ng-template matStepLabel>{{cnst.viewValue}}</ng-template>
           <mat-form-field class="selOptns">
-            <mat-select [name]="cnst.value" ngModel>
+            <mat-select [name]="cnst.value" ngModel required>
               <ng-container *ngFor="let name of cnst.candte">
                 <mat-option (click)="onChange(name.viewValue,cnst.viewValue)" [value]="name.viewValue">
                   {{name.viewValue}}
@@ -33,14 +38,14 @@
         </mat-step>
         <br/>
         <!--<mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        You are now done.
-        <div>
-          <button mat-button (click)="poll.reset()">Reset</button>
-        </div>
-      </mat-step>-->
+          <ng-template matStepLabel>Done</ng-template>
+          You are now done.
+          <div>
+            <button mat-button (click)="poll.reset()">Reset</button>
+          </div>
+        </mat-step>-->
         <!--<button class="save-btn" mat-raised-button>Save</button>
-        <button class="save-btn" mat-raised-button (click)="poll.reset()">Reset</button>-->
+          <button class="save-btn" mat-raised-button (click)="poll.reset()">Reset</button>-->
       </mat-vertical-stepper>
       <div id="nationalVote">
         <h2>Predict the Seat Share (543 Seats)</h2>
@@ -64,8 +69,21 @@
         <p class="note">Note: Please enter prediction with total seats of 543</p>
       </div>
       <br/>
-      <button class="save-btn moveLeft" mat-raised-button>Submit</button>
+      <button [disabled]="btnSbtDisabled" class="save-btn moveLeft" mat-raised-button>Submit</button>
       <button type="button" class=" reset moveLeft" mat-raised-button (click)="poll.reset()">Reset</button>
     </div>
   </div>
 </form>
+
+
+<!-- Form submit success message -->
+<mat-card *ngIf="displayDiv==='msg-success'" class="msg-container">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Success!</mat-card-title>
+    <mat-card-subtitle>Your form submitted successfully.</mat-card-subtitle>
+  </mat-card-header>
+  <img src="../assets/tick.gif" class="success-Img" alt="Success Tick">
+</mat-card>
+
+<!-- Portal disable on 22 April message -->

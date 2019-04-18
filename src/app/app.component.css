@@ -77,3 +77,50 @@ input[type=number]::-webkit-outer-spin-button {
 .remaining-seats {
     margin-bottom: 8px;
 }
+
+.msg-container {
+    margin-top: 10%;
+    margin-left: 40%;
+    width: 20%;
+}
+
+.success-Img {
+    width: 20%;
+    margin-left: 40%;
+}
+
+/deep/ .countdown {
+    width: 14%;
+    position: fixed;
+    height: 57px;
+    background: #000000b5;
+    border-radius: 0px 10px 10px 0px;
+    margin-top: 31px;
+}
+
+/deep/ .measurements {
+    color: white;
+    margin-right: 5px;
+    padding: 10px;
+}
+
+/deep/ .divider {
+    font-size: 30px;
+}
+
+/deep/ .measurements-number {
+    margin-bottom: 1px;
+    font-size: 13px;
+}
+
+/deep/ .measurements-text {
+    margin-top: 6px;
+    font-size: 13px;
+}
+
+.label-counter{
+    margin-bottom: 2px;
+    margin-top: 10px;
+    margin-left: 1px;
+    position: fixed;
+}
