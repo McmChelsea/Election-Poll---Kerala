@@ -10,6 +10,7 @@ import { ConstantPool } from '@angular/compiler';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+    remainingSeats = 543;
     title = 'ElecPoll';
     a: any;
     isLinear = false;
@@ -18,9 +19,9 @@ export class AppComponent implements OnInit {
     Thrdfrnt: number = null;
     totalSeats: number = 572;
     seatsInp: number;
-    private isDisabledUpa: boolean = false;
-    private isDisabledNda: boolean = false;
-    private isDisabledOth: boolean = false;
+    isDisabledUpa: boolean = false;
+    isDisabledNda: boolean = false;
+    isDisabledOth: boolean = false;
     constituents = [
         {
             value: 'Thiruvananthapuram',
@@ -238,8 +239,15 @@ export class AppComponent implements OnInit {
     //         });
 
     onClickSubmit(form: NgForm, data, isValid: boolean) {
+        const total = this.upa + this.nda + this.Thrdfrnt;
+
         if (!isValid) {
-            alert("Enter All Fields")
+            alert("Please make sure you have entered \n1) UID \n2) Name \n3) 20 Constituents and \n4) Seat Shares")
+        } else if (this.upa === null || this.nda === null || this.Thrdfrnt === null) {
+            alert('Please fill all the seat shares');
+        } else if (total !== 543) {
+            alert('Prediction Total must be equal to 543');
+            this.Thrdfrnt = 543 - (this.upa + this.nda);
         } else {
             this.fs.createUser(data)
                 .then(
@@ -252,7 +260,6 @@ export class AppComponent implements OnInit {
     }
 
     onSearchChange(button: string) {
-        console.log(button);
         //Single Input logic
         if (button === 'upa') {
             if (this.upa >= 543) {
@@ -287,19 +294,19 @@ export class AppComponent implements OnInit {
             }
         }
         //Sum of two inputs - auto fill the third
-        if((this.nda > 0) && (this.upa > 0)) {
-            if(this.nda + this.upa < 543){
-                this.Thrdfrnt = 543 - (this.nda + this.upa); 
+        if ((this.nda > 0) && (this.upa > 0)) {
+            if (this.nda + this.upa < 543) {
+                this.Thrdfrnt = 543 - (this.nda + this.upa);
             }
         }
-        if((this.nda > 0) && (this.Thrdfrnt > 0)) {
-            if(this.nda + this.Thrdfrnt < 543){
-                this.upa = 543 - (this.nda + this.Thrdfrnt); 
+        if ((this.nda > 0) && (this.Thrdfrnt > 0)) {
+            if (this.nda + this.Thrdfrnt < 543) {
+                this.upa = 543 - (this.nda + this.Thrdfrnt);
             }
         }
-        if((this.upa > 0) && (this.Thrdfrnt > 0)) {
-            if(this.upa + this.Thrdfrnt < 543){
-                this.nda = 543 - (this.upa + this.Thrdfrnt); 
+        if ((this.upa > 0) && (this.Thrdfrnt > 0)) {
+            if (this.upa + this.Thrdfrnt < 543) {
+                this.nda = 543 - (this.upa + this.Thrdfrnt);
             }
         }
         // if((this.nda > 0) && (this.Thrdfrnt > 0)) {

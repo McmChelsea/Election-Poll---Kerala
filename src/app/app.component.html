@@ -10,8 +10,8 @@
         <input matInput placeholder="U49613" name="UID" ngModel required maxlength="6">
       </mat-form-field>
       <mat-form-field class="moveLeft nameInp" appearance="outline">
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Enter your Name" name="name" ngModel required>
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="Enter your Email" name="name" ngModel required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
       </mat-form-field>
       <br/>
       <mat-vertical-stepper>
@@ -32,32 +32,28 @@
           </div>
         </mat-step>
         <br/>
-        <!--<mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        You are now done.
-        <div>
-          <button mat-button (click)="poll.reset()">Reset</button>
-        </div>
-      </mat-step>-->
-        <!--<button class="save-btn" mat-raised-button>Save</button>
-        <button class="save-btn" mat-raised-button (click)="poll.reset()">Reset</button>-->
       </mat-vertical-stepper>
       <div id="nationalVote">
-        <h2>Predict the Seat Share</h2>
+        <h2>Predict the Seat Share (543 Seats)</h2>
       </div>
       <mat-form-field class="moveLeft upaInp" appearance="outline">
         <mat-label>Seats for UPA</mat-label>
-        <input type="number" disabled={{isDisabledUpa}} matInput placeholder="Enter a number" (input)="onSearchChange('upa')" name="upa" [(ngModel)]="upa" required>
+        <input type="number" disabled={{isDisabledUpa}} matInput placeholder="Enter a number" (input)="onSearchChange('upa')" name="upa"
+          [(ngModel)]="upa" required>
       </mat-form-field>
       <mat-form-field class="moveLeft upaInp" appearance="outline">
         <mat-label>Seats for NDA</mat-label>
-        <input type="number"  disabled={{isDisabledNda}} matInput placeholder="Enter a number" (input)="onSearchChange('nda')" name="nda" [(ngModel)]="nda" required>
+        <input type="number" disabled={{isDisabledNda}} matInput placeholder="Enter a number" (input)="onSearchChange('nda')" name="nda"
+          [(ngModel)]="nda" required>
       </mat-form-field>
       <mat-form-field class="moveLeft upaInp" appearance="outline">
         <mat-label>Seats for Others</mat-label>
-        <input type="number"  disabled={{isDisabledOth}} matInput placeholder="Enter a number" (input)="onSearchChange('ThirdFront')" name="ThirdFront" [(ngModel)]="Thrdfrnt" required>
+        <input type="number" disabled={{isDisabledOth}} matInput placeholder="Enter a number" (input)="onSearchChange('ThirdFront')"
+          name="ThirdFront" [(ngModel)]="Thrdfrnt" required>
       </mat-form-field>
-      <div id = "totalNo" class="moveLeft"><h5>Total Number of available seats - 543</h5></div>
+      <div id="totalNo" class="moveLeft">
+        <p class="note">Note: Please enter prediction with total seats of 543</p>
+      </div>
       <br/>
       <button class="save-btn moveLeft" mat-raised-button>Submit</button>
       <button type="button" class=" reset moveLeft" mat-raised-button (click)="poll.reset()">Reset</button>
