@@ -13,13 +13,13 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { AdminComponent } from './admin/admin.component';
-import { CountDown } from "ng2-date-countdown";
+// import { CountDown } from "ng2-date-countdown";
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
-    CountDown
+    // CountDown
   ],
   imports: [
     BrowserModule,

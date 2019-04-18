@@ -255,6 +255,7 @@ export class AppComponent implements OnInit {
         this.btnSbtDisabled = true;
         if (!isValid) {
             alert("Please make sure you have entered \n1) UID \n2) Email \n3) 20 Constituents and \n4) Seat Shares")
+            this.btnSbtDisabled = false;
         } else if (this.upa === null || this.nda === null || this.Thrdfrnt === null) {
             alert('Please fill all the seat shares');
             this.btnSbtDisabled = false;
