@@ -12,11 +12,11 @@
       <!--<button [routerLink]="admin" class="save-btn" mat-raised-button (click)="getDetails()">Admin</button>-->
       <mat-form-field class="moveLeft uidInpt" appearance="outline">
         <mat-label>UID</mat-label>
-        <input matInput placeholder="U49613" name="UID" ngModel required maxlength="6">
+        <input matInput placeholder="U12345" name="UID" ngModel required maxlength="6">
       </mat-form-field>
       <mat-form-field class="moveLeft nameInp" appearance="outline">
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Enter your Name" name="name" ngModel required>
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="xxx@ust-global.com" name="name" ngModel required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
       </mat-form-field>
       <br/>
       <mat-vertical-stepper>
@@ -37,15 +37,6 @@
           </div>
         </mat-step>
         <br/>
-        <!--<mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          You are now done.
-          <div>
-            <button mat-button (click)="poll.reset()">Reset</button>
-          </div>
-        </mat-step>-->
-        <!--<button class="save-btn" mat-raised-button>Save</button>
-          <button class="save-btn" mat-raised-button (click)="poll.reset()">Reset</button>-->
       </mat-vertical-stepper>
       <div id="nationalVote">
         <h2>Predict the Seat Share (543 Seats)</h2>

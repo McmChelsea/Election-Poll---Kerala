@@ -254,8 +254,7 @@ export class AppComponent implements OnInit {
         const total = this.upa + this.nda + this.Thrdfrnt;
         this.btnSbtDisabled = true;
         if (!isValid) {
-            alert("Enter All Fields")
-            this.btnSbtDisabled = false;
+            alert("Please make sure you have entered \n1) UID \n2) Email \n3) 20 Constituents and \n4) Seat Shares")
         } else if (this.upa === null || this.nda === null || this.Thrdfrnt === null) {
             alert('Please fill all the seat shares');
             this.btnSbtDisabled = false;
