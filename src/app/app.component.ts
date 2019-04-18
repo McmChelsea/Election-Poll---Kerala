@@ -242,7 +242,7 @@ export class AppComponent implements OnInit {
         const total = this.upa + this.nda + this.Thrdfrnt;
 
         if (!isValid) {
-            alert("Please make sure you have entered \n1) UID \n2) Name \n3) 20 Constituents and \n4) Seat Shares")
+            alert("Please make sure you have entered \n1) UID \n2) Email \n3) 20 Constituents and \n4) Seat Shares")
         } else if (this.upa === null || this.nda === null || this.Thrdfrnt === null) {
             alert('Please fill all the seat shares');
         } else if (total !== 543) {
