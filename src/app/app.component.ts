@@ -292,6 +292,16 @@ export class AppComponent implements OnInit {
                 this.Thrdfrnt = 543 - (this.nda + this.upa); 
             }
         }
+        if((this.nda > 0) && (this.Thrdfrnt > 0)) {
+            if(this.nda + this.Thrdfrnt < 543){
+                this.upa = 543 - (this.nda + this.Thrdfrnt); 
+            }
+        }
+        if((this.upa > 0) && (this.Thrdfrnt > 0)) {
+            if(this.upa + this.Thrdfrnt < 543){
+                this.nda = 543 - (this.upa + this.Thrdfrnt); 
+            }
+        }
         // if((this.nda > 0) && (this.Thrdfrnt > 0)) {
         //     if(this.nda + this.Thrdfrnt < 543){
         //         this.upa = 543 - (this.nda + this.Thrdfrnt); 
