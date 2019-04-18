@@ -10,6 +10,7 @@ import { ConstantPool } from '@angular/compiler';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+    remainingSeats = 543;
     title = 'ElecPoll';
     a: any;
     isLinear = false;
@@ -238,9 +239,6 @@ export class AppComponent implements OnInit {
     //         });
 
     onClickSubmit(form: NgForm, data, isValid: boolean) {
-        console.log(this.upa);
-        console.log(this.nda);
-        console.log(this.Thrdfrnt);
         const total = this.upa + this.nda + this.Thrdfrnt;
 
         if (!isValid) {
