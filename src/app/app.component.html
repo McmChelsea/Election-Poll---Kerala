@@ -1,80 +1,32 @@
-<!-- countdown timer -->
-<!-- <p class="label-counter">Time remaining:</p>  -->
-<!-- <countdown [text]="text" units="Days | Hours | Minutes | Seconds" end="April 23, 2019"></countdown> -->
+<!-- <div *ngFor = "let data of detailedData">
+  <span>{{data.aaname}}</span><br>
+</div> -->
 
-<!-- Election Form Start -->
-<form *ngIf="displayDiv==='form'" #poll="ngForm" (ngSubmit)="onClickSubmit(poll,poll.value,poll.valid)" novalidate>
-  <div class="container">
-    <div class="elecForm">
-      <div id="title">
-        <h1>General Election 2019 - EQ Prediction Contest </h1>
-      </div>
-      <!--<button [routerLink]="admin" class="save-btn" mat-raised-button (click)="getDetails()">Admin</button>-->
-      <mat-form-field class="moveLeft uidInpt" appearance="outline">
-        <mat-label>UID</mat-label>
-        <input matInput placeholder="U12345" name="UID" ngModel required maxlength="6">
-      </mat-form-field>
-      <mat-form-field class="moveLeft nameInp" appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" placeholder="xxx@ust-global.com" name="name" ngModel required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
-      </mat-form-field>
-      <br/>
-      <mat-vertical-stepper>
-        <mat-step *ngFor="let cnst of constituents; let i = index;" [stepControl]="cnst.viewValue">
-          <ng-template matStepLabel>{{cnst.viewValue}}</ng-template>
-          <mat-form-field class="selOptns">
-            <mat-select [name]="cnst.value" ngModel required>
-              <ng-container *ngFor="let name of cnst.candte">
-                <mat-option (click)="onChange(name.viewValue,cnst.viewValue)" [value]="name.viewValue">
-                  {{name.viewValue}}
-                </mat-option>
-              </ng-container>
-            </mat-select>
-          </mat-form-field>
-          <div>
-            <button *ngIf="i>0" type="button" mat-button matStepperPrevious>Back</button>
-            <button *ngIf="i<19" type="button" mat-button matStepperNext>Next</button>
-          </div>
-        </mat-step>
-        <br/>
-      </mat-vertical-stepper>
-      <div id="nationalVote">
-        <h2>Predict the Seat Share (543 Seats)</h2>
-      </div>
-      <mat-form-field class="moveLeft upaInp" appearance="outline">
-        <mat-label>Seats for UPA</mat-label>
-        <input type="number" disabled={{isDisabledUpa}} matInput placeholder="Enter a number" (input)="onSearchChange('upa')" name="upa"
-          [(ngModel)]="upa" required>
-      </mat-form-field>
-      <mat-form-field class="moveLeft upaInp" appearance="outline">
-        <mat-label>Seats for NDA</mat-label>
-        <input type="number" disabled={{isDisabledNda}} matInput placeholder="Enter a number" (input)="onSearchChange('nda')" name="nda"
-          [(ngModel)]="nda" required>
-      </mat-form-field>
-      <mat-form-field class="moveLeft upaInp" appearance="outline">
-        <mat-label>Seats for Others</mat-label>
-        <input type="number" disabled={{isDisabledOth}} matInput placeholder="Enter a number" (input)="onSearchChange('ThirdFront')"
-          name="ThirdFront" [(ngModel)]="Thrdfrnt" required>
-      </mat-form-field>
-      <div id="totalNo" class="moveLeft">
-        <p class="note">Note: Please enter prediction with total seats of 543</p>
-      </div>
-      <br/>
-      <button [disabled]="btnSbtDisabled" class="save-btn moveLeft" mat-raised-button>Submit</button>
-      <button type="button" class=" reset moveLeft" mat-raised-button (click)="poll.reset()">Reset</button>
-    </div>
-  </div>
-</form>
+<mat-accordion>
+  <mat-expansion-panel *ngFor = "let data of detailedData">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{data.aaname}}
+      </mat-panel-title>
+      <mat-panel-description>
+        
+      </mat-panel-description>
+    </mat-expansion-panel-header>
 
-
-<!-- Form submit success message -->
-<mat-card *ngIf="displayDiv==='msg-success'" class="msg-container">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Success!</mat-card-title>
-    <mat-card-subtitle>Your form submitted successfully.</mat-card-subtitle>
-  </mat-card-header>
-  <img src="../assets/tick.gif" class="success-Img" alt="Success Tick">
-</mat-card>
-
-<!-- Portal disable on 22 April message -->
+    <!-- <mat-form-field>
+      <span>Alappuzha : {{data.Alappuzha}} </span>
+    </mat-form-field> -->
+  </mat-expansion-panel>
+  <!-- <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Self aware panel
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel> -->
+</mat-accordion>

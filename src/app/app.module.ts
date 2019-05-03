@@ -13,6 +13,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { AdminComponent } from './admin/admin.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 // import { CountDown } from "ng2-date-countdown";
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AdminComponent } from './admin/admin.component';
     MatInputModule,
     MatCardModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

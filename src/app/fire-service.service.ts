@@ -8,8 +8,8 @@ export class FireServiceService {
 
   constructor(public db: AngularFirestore) { }
 
-  createUser(value){
-    return this.db.collection("EQ-team").doc(value.UID).set({
+  createUser(value) {
+    return this.db.collection("EQ-POLL-Prod").doc(value.UID).set({
       Alappuzha: value.Alappuzha,
       Alathur: value.Alathur,
       Attingal: value.Attingal,
@@ -36,8 +36,13 @@ export class FireServiceService {
     });
   }
 
-  getPeople(){
-    return this.db.collection('/userdata').snapshotChanges();
-}
+  getData() {
+    return this.db.collection("EQ-POLL-Prod").valueChanges();
+  }
+
+//   async getMarker() {
+//     const snapshot = await this.db.collection('events').get()
+//     return snapshot.docs.map(doc => doc.data());
+// }
 
 }

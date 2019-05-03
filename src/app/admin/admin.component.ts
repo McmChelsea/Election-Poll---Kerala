@@ -12,10 +12,8 @@ export class AdminComponent implements OnInit {
   constructor( public db: FireServiceService) { }
 
   ngOnInit() { 
-    this.getDetails();
+    //this.getDetails();
   }
 
-  getDetails = () => 
-  this.db.getPeople().subscribe(res => (this.a = res));
 
 }

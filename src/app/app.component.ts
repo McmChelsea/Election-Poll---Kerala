@@ -24,6 +24,8 @@ export class AppComponent implements OnInit {
     isDisabledNda: boolean = false;
     isDisabledOth: boolean = false;
     displayDiv = 'form';
+    panelOpenState = false;
+    detailedData: any;
     text: any = {
         Year: 'Year',
         Month: 'Month',
@@ -79,8 +81,8 @@ export class AppComponent implements OnInit {
             value: 'Mavelikkara',
             viewValue: 'Mavelikkara',
             candte: [
-                { value: 'Kodikunnil Suresh', viewValue: 'Chittayam Gopakumar(UDF)' },
-                { value: 'C. Divakaran', viewValue: 'C. Divakaran(LDF)' },
+                { value: 'Kodikunnil Suresh', viewValue: 'Kodikunnil Suresh(UDF)' },
+                { value: 'Chittayam Gopakumar', viewValue: 'Chittayam Gopakumar(LDF)' },
                 { value: 'Thazhava Sahadevan', viewValue: 'Thazhava Sahadevan(NDA)' },
                 { value: 'Others', viewValue: 'Others' }
             ]
@@ -240,15 +242,17 @@ export class AppComponent implements OnInit {
     constructor(public fs: FireServiceService, private route: Router, public db: FireServiceService) { }
 
     ngOnInit() {
-        //this.getDetails();
+       this.getDetails();
     }
 
-    // getDetails = () =>
-    //     this.db.getPeople()
-    //         .subscribe(
-    //         res => {
-    //             console.log(res);
-    //         });
+    getDetails = () =>
+        this.db
+            .getData()
+            .subscribe(res => {
+                this.detailedData = res;
+                console.log(this.detailedData);
+            }); 
+                //(this.detailedData = res));
 
     onClickSubmit(form: NgForm, data, isValid: boolean) {
         const total = this.upa + this.nda + this.Thrdfrnt;
