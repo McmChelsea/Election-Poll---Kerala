@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FireServiceService } from './fire-service.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -26,6 +26,27 @@ export class AppComponent implements OnInit {
     displayDiv = 'form';
     panelOpenState = false;
     detailedData: any;
+    
+    res_Alappuzha = 'Shanimol Usman(UDF)';
+    res_Alathur= 'Remya Haridas(UDF)';
+    res_Attingal= 'Adoor Prakash(UDF)'; 
+    res_Chalakudy= 'Benny Behanan(UDF)';
+    res_Ernakulam= 'Hibi Eden(UDF)';
+    res_Idukki= 'Dean Kuriakose(UDF)';
+    res_Kannur= 'K. Sudhakaran(UDF)';
+    res_Kasaragod= 'K.P. Satheesh Chandran(LDF)';
+    res_Kottayam= 'Thomas Chazhikadan(UDF)';
+    res_Kozhikode= 'A. Pradeepkumar(LDF)';
+    res_Malappuram= 'P. K. Kunhalikutty(UDF)';
+    res_Mavelikkara= 'Kodikunnil Suresh(UDF)';
+    res_Palakkad= 'M.B. Rajesh(LDF)';
+    res_Pathanamthitta= 'K. Surendran(NDA)';
+    res_Ponnani= 'E. T. Mohammed Basheer(UDF)';
+    res_Thiruvananthapuram= 'Kummanam Rajasekharan(NDA)'; 
+    res_Thrissur= 'Suresh Gopi(NDA)';
+    res_Vatakara= 'K. Muraleedharan(UDF)';
+    res_Wayanad= 'Rahul Gandhi(UDF)';
+
     text: any = {
         Year: 'Year',
         Month: 'Month',
@@ -41,7 +62,7 @@ export class AppComponent implements OnInit {
             value: 'Thiruvananthapuram',
             viewValue: 'Thiruvananthapuram',
             candte: [
-                { value: 'Shashi Tharoor', viewValue: 'Shashi Tharoor(UDF)' },
+                { value: 'Shashi Tharoor', viewValue: 'Shashi Tharoor(UDF)', isCorrect: 'true' },
                 { value: 'C. Divakaran', viewValue: 'C. Divakaran(LDF)' },
                 { value: 'Kummanam Rajasekharan', viewValue: 'Kummanam Rajasekharan(NDA)' },
                 { value: 'Others', viewValue: 'Others' }
@@ -57,21 +78,22 @@ export class AppComponent implements OnInit {
                 { value: 'Others', viewValue: 'Others' }
             ]
         },
-        {
-            value: 'Kollam',
-            viewValue: 'Kollam',
-            candte: [
-                { value: 'N. K. Premachandran', viewValue: 'N. K. Premachandran(UDF)' },
-                { value: 'K. N. Balagopal', viewValue: 'K. N. Balagopal(LDF)' },
-                { value: 'KV Sabu', viewValue: 'KV Sabu(NDA)' },
-                { value: 'Others', viewValue: 'Others' }
-            ]
-        },
+        //Avoided Kollam, Used Kottayam instead...
+        // {
+        //     value: 'Kollam',
+        //     viewValue: 'Kollam',
+        //     candte: [
+        //         { value: 'N. K. Premachandran', viewValue: 'N. K. Premachandran(UDF)' },
+        //         { value: 'K. N. Balagopal', viewValue: 'K. N. Balagopal(LDF)' },
+        //         { value: 'KV Sabu', viewValue: 'KV Sabu(NDA)' },
+        //         { value: 'Others', viewValue: 'Others' }
+        //     ]
+        // },
         {
             value: 'Pathanamthitta',
             viewValue: 'Pathanamthitta',
             candte: [
-                { value: 'Anto Antony', viewValue: 'Anto Antony(UDF)' },
+                { value: 'Anto Antony', viewValue: 'Anto Antony(UDF)', isCorrect : 'true' },
                 { value: 'Veena George', viewValue: 'Veena George(LDF)' },
                 { value: 'K. Surendran', viewValue: 'K. Surendran(NDA)' },
                 { value: 'Others', viewValue: 'Others' }
@@ -243,6 +265,18 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
        this.getDetails();
+      // console.log(this.constituents);
+      //  console.log(this.Attingall);
+     
+    }
+
+    ngAfterViewInit() {
+        this.countNos();
+    }
+
+    countNos() {
+        //return document.getElementsByClassName("count")[0].classList.length;
+        console.log(document.getElementsByClassName( "count" ).length);
     }
 
     getDetails = () =>
@@ -250,7 +284,7 @@ export class AppComponent implements OnInit {
             .getData()
             .subscribe(res => {
                 this.detailedData = res;
-                console.log(this.detailedData);
+                //console.log(this.detailedData);
             }); 
                 //(this.detailedData = res));
 
