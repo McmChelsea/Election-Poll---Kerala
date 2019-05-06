@@ -47,6 +47,30 @@ export class AppComponent implements OnInit {
     res_Vatakara= 'K. Muraleedharan(UDF)';
     res_Wayanad= 'Rahul Gandhi(UDF)';
 
+    results = [
+        
+        { Alappuzha: 'Shanimol Usman(UDF)' },
+        { Alathur: 'Remya Haridas(UDF)' },
+        { Attingal: 'Adoor Prakash(UDF)' },
+        { Chalakudy: 'Benny Behanan(UDF)' },
+        { Ernakulam: 'Hibi Eden(UDF)' },
+        { Idukki: 'Dean Kuriakose(UDF)' },
+        { Kannur: 'K. Sudhakaran(UDF)' },
+        { Kasaragod: 'K.P. Satheesh Chandran(LDF)' },
+        { Kollam: 'Thomas Chazhikadan(UDF)' },
+        { Kozhikode: 'A. Pradeepkumar(LDF)' },
+        { Malappuram: 'P. K. Kunhalikutty(UDF)' },
+        { Mavelikkara: 'Kodikunnil Suresh(UDF)' },
+        { Palakkad: 'M.B. Rajesh(LDF)' },
+        { Pathanamthitta: 'K. Surendran(NDA)' },
+        { Ponnani: 'E. T. Mohammed Basheer(UDF)' },
+        { Thiruvananthapuram: 'Kummanam Rajasekharan(NDA)' },
+        { Thrissur: 'Suresh Gopi(NDA)' },
+        { Vatakara: 'K. Muraleedharan(UDF)' },
+        { Wayanad: 'Rahul Gandhi(UDF)' }
+        
+    ];
+
     text: any = {
         Year: 'Year',
         Month: 'Month',
@@ -264,29 +288,46 @@ export class AppComponent implements OnInit {
     constructor(public fs: FireServiceService, private route: Router, public db: FireServiceService) { }
 
     ngOnInit() {
-       this.getDetails();
-      // console.log(this.constituents);
-      //  console.log(this.Attingall);
-     
+       this.getDetails();   
+       //console.log(1)   
     }
 
+    
+
     ngAfterViewInit() {
-        this.countNos();
+        //this.countNos();
+        //this.compareValues();
+        //console.log(2)
     }
 
     countNos() {
         //return document.getElementsByClassName("count")[0].classList.length;
-        console.log(document.getElementsByClassName( "count" ).length);
+        //console.log(document.getElementsByClassName( "count" ).length);
     }
 
     getDetails = () =>
+    
         this.db
             .getData()
             .subscribe(res => {
                 this.detailedData = res;
                 //console.log(this.detailedData);
-            }); 
+                this.compareValues();
+            });
+           
+             
                 //(this.detailedData = res));
+
+    compareValues() {
+        let count = 0;
+        //console.log(this.detailedData);
+        for (let i of this.detailedData){
+            for(let j of this.results){
+                count++;
+                console.log(i.aaname)
+            }
+        }
+    }
 
     onClickSubmit(form: NgForm, data, isValid: boolean) {
         const total = this.upa + this.nda + this.Thrdfrnt;
