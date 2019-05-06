@@ -324,7 +324,7 @@ export class AppComponent implements OnInit {
         for (let i of this.detailedData){
             for(let j of this.results){
                 count++;
-                console.log(i.aaname)
+                console.log()
             }
         }
     }
