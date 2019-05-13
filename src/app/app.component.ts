@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 import { FireServiceService } from './fire-service.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -9,7 +9,7 @@ import { ConstantPool } from '@angular/compiler';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit,AfterViewInit,AfterViewChecked {
     btnSbtDisabled = false;
     remainingSeats = 543;
     title = 'ElecPoll';
@@ -26,7 +26,8 @@ export class AppComponent implements OnInit {
     displayDiv = 'form';
     panelOpenState = false;
     detailedData: any;
-    
+    dataCount: any;
+
     res_Alappuzha = 'Shanimol Usman(UDF)';
     res_Alathur= 'Remya Haridas(UDF)';
     res_Attingal= 'Adoor Prakash(UDF)'; 
@@ -285,19 +286,29 @@ export class AppComponent implements OnInit {
         }
     ];
 
-    constructor(public fs: FireServiceService, private route: Router, public db: FireServiceService) { }
+    constructor(public fs: FireServiceService, private route: Router, public db: FireServiceService, private cdr: ChangeDetectorRef) { }
 
     ngOnInit() {
-       this.getDetails();   
-       //console.log(1)   
+       this.getDetails(); 
+   
     }
-
-    
 
     ngAfterViewInit() {
         //this.countNos();
         //this.compareValues();
         //console.log(2)
+        //console.log(document.querySelectorAll('.person0 .count').length)
+    }
+
+    ngAfterViewChecked() {
+        var person = [];
+        for(var i = 0; i < this.detailedData.length; i++ ){
+            //console.log(this.detailedData.length);
+            //person[i] = document.querySelectorAll('.person(i) .count').length;
+            console.log(person[i]);
+            //this.cdr.detectChanges();
+        }
+       //console.log(a)
     }
 
     countNos() {
@@ -311,8 +322,8 @@ export class AppComponent implements OnInit {
             .getData()
             .subscribe(res => {
                 this.detailedData = res;
-                //console.log(this.detailedData);
-                this.compareValues();
+                console.log(this.detailedData);
+                //this.compareValues();
             });
            
              
